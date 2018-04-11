@@ -22,9 +22,9 @@ app.use((req, res, next) => {
 }); //register middleware; takes function
 
 //middleware that bypasses other handlers
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname + '/public')); //takes abs path to folder you want to serve up
 
@@ -66,6 +66,12 @@ app.get('/bad', (req, res) => {
     errorMessage: 'There has been an error'
   });
 });
+
+app.get ('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects'
+  })
+})
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
